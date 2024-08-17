@@ -9,20 +9,20 @@
         @font-face {
             font-family: 'VCR_OSD_MONO';
             src: url('VCR_OSD_MONO_1.001.ttf') format('truetype');
-        } 
+        }
 
         body {
             display: flex;
             justify-content: center;
-            align-items: center; 
-            min-height: 100vh; 
+            align-items: center;
+            min-height: 100vh;
             background-color: black;
-            color: blue; 
+            color: blue;
             font-family: 'VCR_OSD_MONO', monospace;
             margin: 0;
-            overflow: hidden; 
+            overflow: hidden;
             user-select: none;
-            flex-direction: column; 
+            flex-direction: column;
         }
 
         .container {
@@ -33,6 +33,7 @@
             width: 60%;
             max-width: 800px;
             box-shadow: none;
+            animation: zoomIn 1.5s ease forwards;
         }
 
         h1 {
@@ -40,30 +41,52 @@
             margin-bottom: 20px;
             color: blue;
             text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: zoomIn 1.5s ease forwards;
         }
 
         p {
             text-align: center;
-            opacity: 70%;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: zoomIn 1.5s ease forwards;
         }
 
         img {
-            width: 30%; 
-            height: auto; 
-            display: block; 
-            margin: 20px auto 0 auto; 
+            width: 30%;
+            height: auto;
+            display: block;
+            margin: 20px auto 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: zoomIn 1.5s ease forwards;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .playButton {
+            animation: zoomIn 1.5s ease forwards;
         }
     </style>
 </head>
-<body> 
-
+<body>
     <div class="container" id="comingsoon">
         <h1>COMING SOON</h1>
         <p>Chatpack.net (c) 2024</p>
         <p>tosen and leak</p>
-        <img src="data93a-1c75895d-d802-417a-a1dd-f150b6008211.png" alt="sunako" />
+        <img src="data93a-1c75895d-d802-417a-a1dd-f150b6008211.png" alt="sunako">
     </div>
-        
+
     <crt id="crt"></crt>
 
     <audio id="background-music" autoplay>
@@ -77,13 +100,14 @@
                 var playButton = document.createElement('button');
                 playButton.innerText = 'Play Music';
                 playButton.style.display = 'block';
-                playButton.style.margin = '20px auto 0 auto'; 
+                playButton.style.margin = '20px auto 0 auto';
                 playButton.style.padding = '10px 20px';
                 playButton.style.fontFamily = 'VCR_OSD_MONO, monospace';
                 playButton.style.fontSize = '1.2em';
                 playButton.style.color = 'blue';
                 playButton.style.backgroundColor = 'black';
                 playButton.style.border = '1px solid blue';
+
                 var container = document.getElementById('comingsoon');
                 container.insertAdjacentElement('afterend', playButton);
 
