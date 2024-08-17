@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chatpack.net</title>
+    <title>tosencord</title>
     <link rel="stylesheet" href="crt.css">
     <style>
         @font-face {
@@ -66,7 +66,7 @@
         
     <crt id="crt"></crt>
 
-    <audio id="background-music" autoplay loop>
+    <audio id="background-music" autoplay>
         <source src="z.mp3" type="audio/mpeg">
     </audio>
 
@@ -74,7 +74,28 @@
         window.addEventListener('load', function() {
             var audio = document.getElementById('background-music');
             audio.play().catch(function() {
-                console.log('Autoplay was prevented');
+                var playButton = document.createElement('button');
+                playButton.innerText = 'Play Music';
+                playButton.style.display = 'block';
+                playButton.style.margin = '20px auto 0 auto'; 
+                playButton.style.padding = '10px 20px';
+                playButton.style.fontFamily = 'VCR_OSD_MONO, monospace';
+                playButton.style.fontSize = '1.2em';
+                playButton.style.color = 'blue';
+                playButton.style.backgroundColor = 'black';
+                playButton.style.border = '1px solid blue';
+                var container = document.getElementById('comingsoon');
+                container.insertAdjacentElement('afterend', playButton);
+
+                playButton.addEventListener('click', function() {
+                    if (audio.paused) {
+                        audio.play();
+                        playButton.innerText = 'Pause Music';
+                    } else {
+                        audio.pause();
+                        playButton.innerText = 'Play Music';
+                    }
+                });
             });
         });
     </script>
