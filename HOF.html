@@ -7,215 +7,223 @@
     <link rel="stylesheet" href="crt.css">
     <style>
         @font-face {
-            font-family: 'VCR_OSD_MONO';
-            src: url('VCR_OSD_MONO_1.001.ttf') format('truetype');
-        }
+    font-family: 'VCR_OSD_MONO';
+    src: url('VCR_OSD_MONO_1.001.ttf') format('truetype');
+}
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: black;
-            color: blue;
-            font-family: 'VCR_OSD_MONO', monospace;
-            margin: 0;
-            overflow: hidden;
-            user-select: none;
-        }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: black;
+    color: blue;
+    font-family: 'VCR_OSD_MONO', monospace;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+}
 
-        #background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            background: black;
-        }
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: black;
+}
 
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: animateStar 50s linear infinite;
-        }
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: animateStar 50s linear infinite;
+}
 
-        @keyframes animateStar {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) translateX(calc(100vw - 100px));
-                opacity: 0;
-            }
-        }
+@keyframes animateStar {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(calc(100vw - 100px));
+        opacity: 0;
+    }
+}
 
-        #container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            transition: transform 0.1s ease-out;
-        }
+#container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.1s ease-out;
+}
 
-        .ascii-cat-right {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: blue;
-            font-size: 12px;
-            white-space: pre;
-            line-height: 1;
-            z-index: 1;
-        }
+.ascii-cat-right {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: blue; 
+    font-size: 12px;
+    white-space: pre;
+    line-height: 1;
+    z-index: 1;
+}
 
-        header {
-            width: 100%;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: absolute;
-            top: 0;
-        }
+header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+}
 
-        header .centered {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            font-size: 24px;
-        }
+header .centered {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 24px;
+}
 
-        header .left, header .right {
-            display: flex;
-            align-items: center;
-        }
+header .left, header .right {
+    display: flex;
+    align-items: center;
+}
 
-        header .right {
-            gap: 10px;
-        }
+header .right {
+    gap: 10px;
+}
 
-        header a {
-            color: blue;
-            text-decoration: none;
-            font-size: 24px;
-            margin-left: 10px;
-        }
+header a {
+    color: blue; 
+    text-decoration: none;
+    font-size: 24px;
+    margin-left: 10px;
+}
 
-        nav {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-top: 60px;
-            position: absolute;
-            top: 30%;
-        }
+nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 60px;
+    position: absolute;
+    top: 30%;
+}
 
-        nav a {
-            margin: 0 15px;
-            color: blue;
-            text-decoration: none;
-            font-size: 24px;
-        }
+nav a {
+    margin: 0 15px;
+    color: blue;
+    text-decoration: none;
+    font-size: 24px;
+}
 
-        .marketplace-text {
-            font-size: 36px;
-            color: blue;
-            margin-top: 20px;
-            text-align: center;
-            font-weight: bold;
-        }
+.marketplace-text {
+    font-size: 36px;
+    color: blue; 
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 100px;
-        }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 100px;
+}
 
-        .grid div {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            border: 2px solid blue;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: blue;
-            overflow: hidden;
-            transition: transform 0.3s ease-out, filter 0.3s ease-out, box-shadow 0.3s ease-out;
-        }
+.grid div {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 2px solid blue; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: blue; 
+    overflow: hidden;
+    transition: transform 0.3s ease-out, filter 0.3s ease-out, box-shadow 0.3s ease-out;
+}
 
-        .grid div img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+.grid div img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
-        .grid div .text-original {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            transition: opacity 0.3s ease-out, filter 0.3s ease-out;
-            color: blue;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
+.grid div .text-original {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    transition: opacity 0.3s ease-out, filter 0.3s ease-out;
+    color: white; 
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
 
-        .grid div .text-hover {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2; 
-            color: blue;
-            font-size: 24px;
-            opacity: 0;
-            transition: opacity 0.3s ease-out;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8); 
-        }
+.grid div .text-hover {
+    position: absolute;
+    bottom: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: #add8e6; 
+    font-size: 16px; 
+    padding: 10px; 
+    text-align: center; 
+    width: 100%; 
+    box-sizing: border-box; 
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    line-height: 1.4; 
+}
 
-        .grid div:hover .text-original {
-            opacity: 0; 
-        }
+.grid div:hover .text-original {
+    opacity: 0;
+}
 
-        .grid div:hover .text-hover {
-            opacity: 1; 
-        }
+.grid div:hover .text-hover {
+    opacity: 1;
+}
 
-        .ascii-cat {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: blue;
-            font-size: 12px;
-            white-space: pre;
-            line-height: 1;
-            z-index: 1;
-        }
 
-        .MouseTrail {
-            position: absolute;
-            height: 7px;
-            width: 7px;
-            border-radius: 4px;
-            background: blue;
-            pointer-events: none;
-        }
+.ascii-cat {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: blue; 
+    font-size: 12px;
+    white-space: pre;
+    line-height: 1;
+    z-index: 1;
+}
+
+.MouseTrail {
+    position: absolute;
+    height: 7px;
+    width: 7px;
+    border-radius: 4px;
+    background: blue; 
+    pointer-events: none;
+}
+
     </style>
 </head>
 <body>
@@ -258,7 +266,7 @@
             <div>
                 <img src="babi.jpg" alt="babi">
                 <span class="text-original">Babi</span>
-                <span class="text-hover">Babi text</span>
+                <span class="text-hover">"forever alive"</span>
             </div>
             <div>
                 <img src="cain.png" alt="cain">
@@ -268,7 +276,7 @@
             <div>
                 <img src="rain.png" alt="rain">
                 <span class="text-original">Rain</span>
-                <span class="text-hover">"adrenaline is my spidey sense"</span>
+                <span class="text-hover">“adrenaline is my spidey sense”</span>
             </div>
             <div>
                 <img src="kev.jpg" alt="kev">
@@ -278,7 +286,7 @@
             <div>
                 <img src="maou.png" alt="maou">
                 <span class="text-original">Maou</span>
-                <span class="text-hover">"tell them im in 764"</span>
+                <span class="text-hover">"tell them im in 764 g"</span>
             </div>
         </div>
 
