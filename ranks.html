@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatpack.NET</title>
+    <link rel="stylesheet" href="crt.css">
+    <style>
+        /* Your existing CSS code */
+
+        @font-face {
+            font-family: 'VCR_OSD_MONO';
+            src: url('VCR_OSD_MONO_1.001.ttf') format('truetype');
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: black;
+            color: blue;
+            font-family: 'VCR_OSD_MONO', monospace;
+            margin: 0;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: black;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: animateStar 50s linear infinite;
+        }
+
+        @keyframes animateStar {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(calc(100vw - 100px));
+                opacity: 0;
+            }
+        }
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: transform 0.1s ease-out;
+        }
+
+        .ascii-cat-right {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: blue;
+            font-size: 12px;
+            white-space: pre;
+            line-height: 1;
+            z-index: 1;
+        }
+
+        header {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+        }
+
+        header .centered {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 24px;
+        }
+
+        header .left, header .right {
+            display: flex;
+            align-items: center;
+        }
+
+        header .right {
+            gap: 10px;
+        }
+
+        header a {
+            color: blue;
+            text-decoration: none;
+            font-size: 24px;
+            margin-left: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 60px;
+            position: absolute;
+            top: 30%;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: blue;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .marketplace-text {
+            font-size: 36px;
+            color: blue;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .grid {
+            display: flex;
+            flex-direction: column; 
+            gap: 20px;
+            margin-top: 100px;
+        }
+
+        .grid div {
+            width: 500px; 
+            height: 100px; 
+            border: 2px solid blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: blue;
+            overflow: hidden;
+            transition: transform 0.3s ease-out, filter 0.3s ease-out, box-shadow 0.3s ease-out;
+            background-color: black; 
+        }
+
+        .grid div .text-original {
+            z-index: 1;
+            transition: opacity 0.3s ease-out, filter 0.3s ease-out;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+
+        .grid div .text-hover {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: #add8e6;
+            font-size: 16px;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            line-height: 1.4;
+        }
+
+        .grid div:hover .text-original {
+            opacity: 0;
+        }
+
+        .grid div:hover .text-hover {
+            opacity: 1;
+        }
+
+        .ascii-cat {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: blue;
+            font-size: 12px;
+            white-space: pre;
+            line-height: 1;
+            z-index: 1;
+        }
+
+        .MouseTrail {
+            position: absolute;
+            height: 7px;
+            width: 7px;
+            border-radius: 4px;
+            background: blue;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container">
+        <header>
+            <div class="left">
+                <a href="https://chatpack.net/home.html">Mainpage</a>
+            </div>
+            <a href="https://chatpack.net/home.html" class="centered"></a>
+            <div class="right">
+                <a href="https://chatpack.net/search.html">Search</a>
+                <a href="https://chatpack.net/user.html">User</a>
+                <a href="https://chatpack.net/options.html">☰</a>
+            </div>
+        </header>
+
+        <div class="marketplace-text">
+            Upgrade
+        </div>
+
+        <p>Welcome to the Upgrade Page,</p>
+        <p>Here, you can purchase a name tag to upgrade your account</p>
+        <p>dm Tosen Or Leak on Discord for Inquiries</p>
+
+        <nav>
+            <a href="https://chatpack.net/forum.html">Forum</a>
+            <a href="https://chatpack.net/clips.html">Clips</a>
+            <a href="https://chatpack.net/HOA.html">HOA</a>
+            <a href="https://chatpack.net/HOF.html">HOF</a>
+            <a href="https://chatpack.net/marketplace.html">Marketplace</a>
+        </nav>
+
+        <div class="grid">
+            <div>
+                <span class="text-original" style="color: gold;background-image: url('https://cdn.doxbin.com/gold.gif');">[Deity]</span>
+                <span class="text-hover">"one above all."</span>
+            </div>
+            <div>
+                <span class="text-original">[Rich]</span>
+                <span class="text-hover">"pockets filled with money."</span>
+            </div>
+            <div>
+                <span class="text-original">[Archangel]</span>
+                <span class="text-hover">"hierarchy."</span>
+            </div>
+            <div>
+                <span class="text-original">Change Name Color</span>
+                <span class="text-hover">"a splash of paint."</span>
+            </div>
+        </div>
+
+        <div id="trails"></div> 
+        <div class="ascii-cat-right"></div>
+    </div>
+
+    <script>
+        
+        const container = document.getElementById('container');
+
+        document.addEventListener('mousemove', (e) => {
+            let x = (window.innerWidth / 2 - e.clientX) / 20;
+            let y = (window.innerHeight / 2 - e.clientY) / 20;
+            container.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        
+        const trails = document.getElementById('trails');
+        const trailCount = 20;
+        const trailArray = [];
+
+        for (let i = 0; i < trailCount; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'MouseTrail';
+            trails.appendChild(dot);
+            trailArray.push(dot);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            const { clientX: x, clientY: y } = e;
+
+            trailArray.forEach((dot, index) => {
+                dot.style.left = `${x}px`;
+                dot.style.top = `${y}px`;
+                dot.style.opacity = 1 - index / trailCount;
+                if (index === trailArray.length - 1) {
+                    dot.style.opacity = 0;
+                }
+            });
+        });
+
+        
+        document.addEventListener('keydown', (event) => {
+            
+            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+                event.preventDefault();
+            }
+            
+            if ((event.ctrlKey && (event.key === 'U' || event.key === 'S')) || event.key === 'F5') {
+                event.preventDefault();
+            }
+        });
+
+        
+        document.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        });
+
+        
+        const detectDevTools = () => {
+            let threshold = 160;
+            let width = window.innerWidth || document.documentElement.clientWidth;
+            let height = window.innerHeight || document.documentElement.clientHeight;
+            if (width <= threshold || height <= threshold) {
+                
+            }
+        };
+
+        window.addEventListener('resize', detectDevTools);
+        detectDevTools();
+    </script>
+</body>
+</html>
